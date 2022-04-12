@@ -20,11 +20,6 @@ public class TestController {
 	public String userAccess() {
 		return "User Content.";
 	}
-	
-	@GetMapping(path = "/hello-world")
-	public String helloWorld() {
-		return "Hello World";
-	}
 
 	@GetMapping("/mod")
 	@PreAuthorize("hasRole('MODERATOR')")

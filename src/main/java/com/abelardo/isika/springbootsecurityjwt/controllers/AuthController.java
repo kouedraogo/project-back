@@ -51,11 +51,6 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
-	
-	@GetMapping(path = "/hello-world")
-	public String helloWorld() {
-		return "Hello World";
-	}
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
