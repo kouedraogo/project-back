@@ -16,7 +16,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-/*
+
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
@@ -29,7 +29,7 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
 	}
 }
-*/
+/*
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
@@ -54,3 +54,4 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
   }
 
 }
+*/
