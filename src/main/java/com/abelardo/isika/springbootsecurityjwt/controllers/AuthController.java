@@ -32,7 +32,7 @@ import com.abelardo.isika.springbootsecurityjwt.repository.UserRepository;
 import com.abelardo.isika.springbootsecurityjwt.repository.RoleRepository;
 import com.abelardo.isika.springbootsecurityjwt.security.jwt.JwtUtils;
 
-@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com/*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
