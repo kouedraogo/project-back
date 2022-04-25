@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abelardo.isika.springbootsecurityjwt.models.ERole;
@@ -33,7 +34,7 @@ import com.abelardo.isika.springbootsecurityjwt.repository.RoleRepository;
 import com.abelardo.isika.springbootsecurityjwt.security.jwt.JwtUtils;
 
 //@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com", maxAge = 3600)
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
