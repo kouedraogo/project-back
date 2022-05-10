@@ -188,7 +188,6 @@ public class AuthController {
 	    }
 	  }
 	
-	/*
 	@PutMapping("/users/{id}")
 	 public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
 	    Optional<User> userData = userRepository.findById(id);
@@ -203,19 +202,5 @@ public class AuthController {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
 	  }
-	  */
-	@PutMapping("/employees/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails){
-		User user = userRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("User not exist with id :" + id));
-		
-		user.setUsername(userDetails.getUsername());
-		user.setEmail(userDetails.getEmail());
-		user.setPassword(encoder.encode(user.getPassword()));
-		user.setRoles(user.getRoles());
-		
-		User updatedEmployee = userRepository.save(user);
-		return ResponseEntity.ok(updatedEmployee);
-	}
 
 }
