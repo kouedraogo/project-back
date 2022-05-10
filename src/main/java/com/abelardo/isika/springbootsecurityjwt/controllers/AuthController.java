@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abelardo.isika.springbootsecurityjwt.exception.ResourceNotFoundException;
 import com.abelardo.isika.springbootsecurityjwt.models.ERole;
 import com.abelardo.isika.springbootsecurityjwt.models.Role;
 import com.abelardo.isika.springbootsecurityjwt.models.User;
@@ -41,7 +42,7 @@ import com.abelardo.isika.springbootsecurityjwt.repository.RoleRepository;
 import com.abelardo.isika.springbootsecurityjwt.security.jwt.JwtUtils;
 
 //@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com", maxAge = 3600)
-@CrossOrigin(origins = "*", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
+@CrossOrigin(origins = "http://localhost:8081/", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -187,6 +188,7 @@ public class AuthController {
 	    }
 	  }
 	
+	/*
 	@PutMapping("/users/{id}")
 	 public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
 	    Optional<User> userData = userRepository.findById(id);
@@ -201,5 +203,19 @@ public class AuthController {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
 	  }
+	  */
+	@PutMapping("/employees/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails){
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("User not exist with id :" + id));
+		
+		user.setUsername(userDetails.getUsername());
+		user.setEmail(userDetails.getEmail());
+		user.setPassword(encoder.encode(user.getPassword()));
+		user.setRoles(user.getRoles());
+		
+		User updatedEmployee = userRepository.save(user);
+		return ResponseEntity.ok(updatedEmployee);
+	}
 
 }
