@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abelardo.isika.springbootsecurityjwt.exception.ResourceNotFoundException;
 import com.abelardo.isika.springbootsecurityjwt.models.ERole;
 import com.abelardo.isika.springbootsecurityjwt.models.Role;
 import com.abelardo.isika.springbootsecurityjwt.models.User;
