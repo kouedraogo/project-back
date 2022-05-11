@@ -1,6 +1,5 @@
 package com.abelardo.isika.springbootsecurityjwt.controllers;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -35,13 +34,13 @@ import com.abelardo.isika.springbootsecurityjwt.payloads.reponse.JwtResponse;
 import com.abelardo.isika.springbootsecurityjwt.payloads.reponse.MessageResponse;
 import com.abelardo.isika.springbootsecurityjwt.payloads.request.LoginRequest;
 import com.abelardo.isika.springbootsecurityjwt.payloads.request.SignupRequest;
-import com.abelardo.isika.springbootsecurityjwt.security.services.UserDetailsImpl;
-import com.abelardo.isika.springbootsecurityjwt.repository.UserRepository;
 import com.abelardo.isika.springbootsecurityjwt.repository.RoleRepository;
+import com.abelardo.isika.springbootsecurityjwt.repository.UserRepository;
 import com.abelardo.isika.springbootsecurityjwt.security.jwt.JwtUtils;
+import com.abelardo.isika.springbootsecurityjwt.security.services.UserDetailsImpl;
 
 //@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com", maxAge = 3600)
-@CrossOrigin(origins = "*", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
+@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
