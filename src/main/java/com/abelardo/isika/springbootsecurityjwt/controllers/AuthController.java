@@ -40,7 +40,7 @@ import com.abelardo.isika.springbootsecurityjwt.security.jwt.JwtUtils;
 import com.abelardo.isika.springbootsecurityjwt.security.services.UserDetailsImpl;
 
 //@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com", maxAge = 3600)
-@CrossOrigin(origins = "http://parisevents.s3-website.eu-west-3.amazonaws.com", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
+@CrossOrigin(origins = "*", maxAge = 3600, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -107,6 +107,8 @@ public class AuthController {
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(userRole);
 		} else {
+			
+		
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
@@ -158,12 +160,17 @@ public class AuthController {
 	@GetMapping("/users/{id}")
   	public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
     Optional<User> userData = userRepository.findById(id);
-    if (userData.isPresent()) {
-      return new ResponseEntity<>(userData.get(), HttpStatus.OK);
-    } 
-    else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+//    if (userData.isPresent()) {
+//      return new ResponseEntity<>(userData.get(), HttpStatus.OK);
+//    } 
+//    else {
+//      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
+    
+        
+    return (userData.isPresent()) 
+    		? new ResponseEntity<>(userData.get(), HttpStatus.OK) 
+    		: new ResponseEntity<>(HttpStatus.NOT_FOUND);
   	}
 	
 	@DeleteMapping("/users/{id}")
